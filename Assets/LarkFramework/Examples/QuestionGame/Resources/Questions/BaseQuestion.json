@@ -1,0 +1,12 @@
+{
+    "Question":"QuestionGame",
+	"QuestionImg":"xxx.png",
+	"ViewMode":0,
+    "AnswerList":
+	{
+		"Answer_1":{"Answer":"aaa","AnswerImg":"xxx.png","IsRight":"true"},
+		"Answer_2":{"Answer":"aaa","AnswerImg":"xxx.png","IsRight":"true"},
+		"Answer_3":{"Answer":"aaa","AnswerImg":"xxx.png","IsRight":"true"},
+		"Answer_4":{"Answer":"aaa","AnswerImg":"xxx.png","IsRight":"true"}
+	}
+}
