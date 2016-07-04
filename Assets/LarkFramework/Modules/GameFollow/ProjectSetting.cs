@@ -28,4 +28,16 @@ namespace LarkFramework
         /// </summary>
         public float LogoDuration;
     }
+
+    public class AppConfig
+    {
+        /// <summary>
+        /// 设置默认帧率
+        /// </summary>
+        public const int FPS = 60;
+        /// <summary>
+        /// Debug模式是否开启
+        /// </summary>
+        public const bool Debug = true;
+    }
 }

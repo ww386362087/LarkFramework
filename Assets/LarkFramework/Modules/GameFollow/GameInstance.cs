@@ -24,7 +24,7 @@ namespace LarkFramework
             mInstance = this;
 
             // 设置帧率为默认60帧
-            Application.targetFrameRate = 60;
+            Application.targetFrameRate = AppConfig.FPS;
         }
 
         void Start()
