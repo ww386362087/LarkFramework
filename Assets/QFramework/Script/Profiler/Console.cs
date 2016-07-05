@@ -21,7 +21,7 @@ public class Console : QSingleton<Console>
     /// <summary>
     /// FPS计数器
     /// </summary>
-    private FPSCounter fpsCounter = null;
+    private FPSCounter1 fpsCounter = null;
     /// <summary>
     /// 内存监视器
     /// </summary>
@@ -30,7 +30,7 @@ public class Console : QSingleton<Console>
 
     private Console()
     {
-        this.fpsCounter = new FPSCounter(this);
+        this.fpsCounter = new FPSCounter1(this);
         this.memoryDetector = new MemoryDetector(this);
 //        this.showGUI = App.Instance().showLogOnGUI;
         App.Instance().onUpdate += Update;
