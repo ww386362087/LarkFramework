@@ -51,7 +51,7 @@ namespace LarkFramework.Test
             //AddSingleton<FileNetworkManager>();
         }
 
-        private static void AddSingleton<T>() where T : Singleton<T>
+        private static void AddSingleton<T>() where T : Singleton1<T>
         {
             if (_rootObj.GetComponent<T>() == null)
             {
@@ -66,7 +66,7 @@ namespace LarkFramework.Test
             }
         }
 
-        public static T GetSingleton<T>() where T : Singleton<T>
+        public static T GetSingleton<T>() where T : Singleton1<T>
         {
             T t = _rootObj.GetComponent<T>();
 
