@@ -35,7 +35,7 @@ namespace LarkFramework
 
         public void SetupTextID(string textID)
         {
-            _label.text = SingletonHelper<Localization>.Instance.GetText(_textID);
+            _label.text = Singleton<Localization>.Instance.GetText(_textID);
         }
 
         public void SetupTextID(string textID, params object[] replaceParams)
