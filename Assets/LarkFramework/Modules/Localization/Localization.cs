@@ -11,7 +11,7 @@ using UnityEngine;
 
 namespace LarkFramework
 {
-    public class Localization 
+    public class Localization : Singleton<Localization>
     {
         /* Language Types */
         public const string CHINESE = "Localization/Chinese.json";
