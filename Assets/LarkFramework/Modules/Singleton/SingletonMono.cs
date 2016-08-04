@@ -49,7 +49,6 @@ namespace LarkFramework
                     Debug.Log("Already exist: " + _instance.name);
                 }
             }
-
             return _instance;
         }
 

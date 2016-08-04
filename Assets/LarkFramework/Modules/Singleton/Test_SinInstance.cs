@@ -10,28 +10,28 @@ namespace LarkFramework.Test
         {
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
-                if (Singleton<ShowSin1>.Create()!=null)
+                if (ShowSin1.Create()!=null)
                     Debug.Log("Create ShowSin1 Access");
 
-                if (SingletonReflex<ShowSin2>.Create() != null)
+                if (ShowSin2.Create() != null)
                     Debug.Log("Create ShowSin2 Access");
 
-                if(SingletonMono<ShowSin3>.Create()!=null)
+                if(ShowSin3.Create()!=null)
                     Debug.Log("Create ShowSin3 Access");
             }
 
             if (Input.GetKeyDown(KeyCode.Alpha2))
             {
-                Singleton<ShowSin1>.Instance.DoSomething();
-                SingletonReflex<ShowSin2>.Instance.DoSomething();
-                SingletonMono<ShowSin3>.Instance.DoSomething();
+                ShowSin1.Instance.DoSomething();
+                ShowSin2.Instance.DoSomething();
+                ShowSin3.Instance.DoSomething();
             }
 
             if (Input.GetKeyDown(KeyCode.Alpha3))
             {
-                Singleton<ShowSin1>.Destroy();
-                SingletonReflex<ShowSin2>.Destroy();
-                SingletonMono<ShowSin3>.Destroy();
+                ShowSin1.Destroy();
+                ShowSin2.Destroy();
+                ShowSin3.Destroy();
             }
         }
     }
