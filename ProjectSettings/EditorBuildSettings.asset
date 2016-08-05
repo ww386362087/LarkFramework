@@ -6,10 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/LarkFramework/Examples/QuestionGame/Scenes/Logo.unity
+    path: Assets/LarkFramework/Modules/GameFellow/Example/GameStart.unity
   - enabled: 1
-    path: Assets/LarkFramework/Examples/QuestionGame/Scenes/Loading.unity
-  - enabled: 1
-    path: Assets/LarkFramework/Examples/QuestionGame/Scenes/MainMenu.unity
-  - enabled: 1
-    path: Assets/LarkFramework/Examples/QuestionGame/Scenes/MainQuestion.unity
+    path: Assets/LarkFramework/Modules/GameFellow/Example/Loading.unity
