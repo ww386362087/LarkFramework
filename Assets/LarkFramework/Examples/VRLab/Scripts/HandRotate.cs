@@ -23,7 +23,7 @@ public class HandRotate : MonoBehaviour {
 
     private void MouseRotate()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(1))
         {
             //根据鼠标移动的快慢(增量), 获得相机左右旋转的角度(处理X)  
             float rotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * sensitivityX;
