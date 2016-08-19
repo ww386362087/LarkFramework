@@ -10,6 +10,8 @@ public class UIManager : MonoBehaviour {
 
     public Text thrust;
     public Text rudder;
+    public Text airSpeed;
+    public Text liftPower;
 
     private EnglineBase englineBase;
 
@@ -23,5 +25,7 @@ public class UIManager : MonoBehaviour {
 	void Update () {
         thrust.text = "Thrust:"+ englineBase.r_Thrust.ToString();
         rudder.text = "left:"+leftRudder.r_RudderPower+"  right:"+rightRudder.r_RudderPower;
+        airSpeed.text = "airSpeed:" + airPlaneBase.airSpeed;
+        liftPower.text = "liftPower:" + airPlaneBase.wingMgr.r_liftPower;
     }
 }
