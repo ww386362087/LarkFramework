@@ -31,7 +31,7 @@ public class HandRaycaster : MonoBehaviour {
         }
 	}
 
-    void OnDrawGizmos()
+    void OnDrawGizmos() 
     {
         Gizmos.DrawRay(mainCam.transform.position, mainCam.transform.TransformDirection(Vector3.forward)*10);
     }
