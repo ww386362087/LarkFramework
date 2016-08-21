@@ -3,6 +3,11 @@ using System.Collections;
 
 public class WingManager : MonoBehaviour {
 
+    /// <summary>
+    /// 机翼面积
+    /// </summary>
+    public float wingArea;
+
     public float r_liftPower;
 
     private Rigidbody rig;
