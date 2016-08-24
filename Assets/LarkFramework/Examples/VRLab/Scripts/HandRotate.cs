@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class HandRotate : MonoBehaviour {
 
+    #region [mouse ctrl fields]
     //方向灵敏度  
     public float sensitivityX = 10F;
     public float sensitivityY = 10F;
@@ -12,13 +14,56 @@ public class HandRotate : MonoBehaviour {
     public float maximumY = 60F;
 
     float rotationY = 0F;
+    #endregion
+
+    #region [gyro ctrl fields]
+    public bool VrModeEnabled
+    {
+        get
+        {
+            return vrModeEnabled;
+        }
+
+        set
+        {
+            vrModeEnabled = value;
+        }
+    }
+    private bool vrModeEnabled = true;
+
+    private Quaternion initialRotation = Quaternion.identity;
+
+    #endregion
+
+    //void Start()
+    //{
+    //    Input.gyro.enabled = vrModeEnabled;
+
+    //    var fw = Input.gyro.attitude * -Vector3.forward;
+    //    fw.z = 0;
+    //    if (fw == Vector3.zero)
+    //    {
+    //        transform.localRotation = Quaternion.identity;
+    //    }
+    //    else
+    //    {
+    //        transform.localRotation = Quaternion.FromToRotation(Quaternion.identity * Vector3.up, fw);
+    //    }
+    //}
 
     void Update()
     {
 #if UNITY_EDITOR
         MouseRotate();
 #endif
+        //transform.localRotation=GyroRotate();
+    }
 
+    private Quaternion GyroRotate()
+    {
+        var att = Input.gyro.attitude * initialRotation;
+        att = new Quaternion(att.x, att.y, -att.z, -att.w);
+        return  Quaternion.Euler(90, 0, 0) * att;
     }
 
     private void MouseRotate()
