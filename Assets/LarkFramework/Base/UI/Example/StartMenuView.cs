@@ -14,7 +14,7 @@ namespace LarkFramework.Test
 
     public class StartMenuView : AnimateView
     {
-        public GEAnim[] geAnims;
+        //public GEAnim[] geAnims;
 
         [SerializeField]
         private Button btn_Close;
@@ -25,17 +25,17 @@ namespace LarkFramework.Test
         /// <param name="isOpen"></param>
         public void DoGEAnims(bool isOpen)
         {
-            for (int i = 0; i < geAnims.Length; i++)
-            {
-                if (isOpen)
-                {
-                    geAnims[i].MoveIn();
-                }
-                else
-                {
-                    geAnims[i].MoveOut();
-                }
-            }
+            //for (int i = 0; i < geAnims.Length; i++)
+            //{
+            //    if (isOpen)
+            //    {
+            //        geAnims[i].MoveIn();
+            //    }
+            //    else
+            //    {
+            //        geAnims[i].MoveOut();
+            //    }
+            //}
         }
 
         public void CloseSelf()

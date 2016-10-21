@@ -10,10 +10,11 @@
 
 using UnityEngine;
 using System.Collections;
+using LarkFramework.GameFollow;
 
-namespace LarkFramework
+namespace LarkFramework.Demo
 {
-    public class GameMode : SingletonMono<GameMode>
+    public class GameMode: GameModeBase<GameMode>
     {
         public GameInstance gameInstance { get; private set; }
         public GameObject gameInstanceObj { get; private set; }
@@ -25,12 +26,16 @@ namespace LarkFramework
             this.gameInstanceObj = gameInstance.gameObject;
 
             print("this is init:"+this.gameInstance);
+
+            TestManager.Create().Init();
         }
 
         public void OnUpdate()
         {
             //Update各类管理器
             print("this is Update:" + this.gameInstance);
+
+            TestManager.Instance.OnUpdate();
         }
 
         public void Destroy()

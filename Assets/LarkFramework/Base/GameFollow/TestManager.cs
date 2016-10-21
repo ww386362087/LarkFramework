@@ -1,21 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
+using LarkFramework.GameFollow;
+using LarkFramework;
 
-namespace LarkFramework
+public class TestManager : ManagerBase<TestManager>
 {
-    public class TestManager : SingletonMono<TestManager>
+
+    // Use this for initialization
+    public override void Init()
     {
+        print(GetType().Name+"this is TestManager Start");
+    }
 
-        // Use this for initialization
-        void Start()
-        {
-            print("this is TestManager Start");
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-            print("this is TestManager Update");
-        }
+    // Update is called once per frame
+    public override void OnUpdate()
+    {
+        print(GetType().Name+"this is TestManager Update");
     }
 }
