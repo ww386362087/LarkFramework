@@ -31,7 +31,7 @@ namespace LarkFramework
                     Debug.LogError("More than 1!");
                     return _instance;
                 }
-
+                
                 if (_instance == null)
                 {
                     string instanceName = typeof(T).Name;
@@ -46,6 +46,7 @@ namespace LarkFramework
                 }
                 else
                 {
+                    DontDestroyOnLoad(_instance);  //保证实例不会被释放
                     Debug.Log("Already exist: " + _instance.name);
                 }
             }

@@ -10,11 +10,12 @@
 
 using UnityEngine;
 using System.Collections;
+using LarkFramework.GameFollow;
 
-namespace LarkFramework
+namespace LarkFramework.Demo
 {
 
-    public class GameInstance : SingletonMono<GameInstance>
+    public class GameInstance : GameInstanceBase<GameInstance>
     {
         void Awake()
         {

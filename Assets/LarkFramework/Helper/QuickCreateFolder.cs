@@ -46,6 +46,10 @@ public class QuickCreateFolder : MonoBehaviour {
         CreateDirectoryAndFile(path, "Animations");
         CreateDirectoryAndFile(path, "Parks");
         CreateDirectoryAndFile(path, "Shaders");
+        CreateDirectoryAndFile(path, "Prefabs");
+        CreateDirectoryAndFile(path, "SandBoxs");
+        CreateDirectoryAndFile(path, "_Documnets");
+        CreateDirectoryAndFile(path, "Terrains");
 
         CreateTxt(Application.dataPath + "/" + Application.productName+"/ReadMe");
         WriteTxt(Application.dataPath + "/" + Application.productName + "/ReadMe.txt","欢迎使用LarkFramework框架！项目："+ Application.productName+" 创建于："+DateTime.Now);
@@ -62,7 +66,7 @@ public class QuickCreateFolder : MonoBehaviour {
     private static void CreateDirectoryAndFile(string path,string name)
     {
         Directory.CreateDirectory(path + name);
-        CreateTxt(path + name+"/"+name);
+        CreateTxt(path + name + "/" + name);
     }
 
     private static void CreateTxt(string path)
@@ -74,10 +78,12 @@ public class QuickCreateFolder : MonoBehaviour {
 
             sw.Close();
             fs.Close();
+
+            WriteTxt(Application.dataPath + "/" + path + ".txt", "欢迎使用LarkFramework框架！项目：" + Application.productName + " 创建于：" + DateTime.Now);
         }
         else
         {
-            Debug.LogError("自动创建文件夹失败，冲突文件："+ path + ".txt");
+            Debug.LogWarning("txt说明文件创建失败，冲突文件："+ path + ".txt");
         }
     }
 
