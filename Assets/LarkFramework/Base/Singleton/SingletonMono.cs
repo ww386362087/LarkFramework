@@ -18,7 +18,7 @@ namespace LarkFramework
 {
     public abstract class SingletonMono<T> : MonoBehaviour where T: SingletonMono<T>
     {
-        protected static T _instance = null;
+        private static T _instance = null;
 
         public static T Create()
         {
