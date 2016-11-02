@@ -9,5 +9,5 @@ EditorBuildSettings:
     path: Assets/LarkFramework/Modules/GameFellow/Example/GameStart.unity
   - enabled: 0
     path: Assets/LarkFramework/Modules/GameFellow/Example/Loading.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/LarkFramework/Examples/VRLab/VRLab.unity
