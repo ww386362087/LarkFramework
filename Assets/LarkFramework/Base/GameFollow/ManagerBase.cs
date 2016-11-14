@@ -17,6 +17,8 @@ namespace LarkFramework.GameFollow
     {
         public virtual void Init() { }
 
+        public virtual void OnStart() { }
+
         public virtual void OnUpdate() { }
 
         public virtual void OnDestory() { }

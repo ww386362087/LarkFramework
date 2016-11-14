@@ -79,7 +79,7 @@ public class QuickCreateFolder : MonoBehaviour {
             sw.Close();
             fs.Close();
 
-            WriteTxt(Application.dataPath + "/" + path + ".txt", "欢迎使用LarkFramework框架！项目：" + Application.productName + " 创建于：" + DateTime.Now);
+            WriteTxt(path + ".txt", "欢迎使用LarkFramework框架！项目：" + Application.productName + " 创建于：" + DateTime.Now);
         }
         else
         {

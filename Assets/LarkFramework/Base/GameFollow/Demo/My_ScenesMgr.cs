@@ -12,26 +12,31 @@ using UnityEngine;
 using System.Collections;
 using LarkFramework.GameFollow;
 
-public class My_ScenesMgr : ManagerBase<My_ScenesMgr> {
+namespace LarkFramework.GameFollow.Demo
+{
 
-    public override void Init()
+    public class My_ScenesMgr : ManagerBase<My_ScenesMgr>
     {
-        base.Init();
 
-        print("My_ScenesMgr Init");
-    }
+        public override void Init()
+        {
+            base.Init();
 
-    public override void OnUpdate()
-    {
-        base.OnUpdate();
+            print("My_ScenesMgr Init");
+        }
 
-        print("My_ScenesMgr OnUpdate");
-    }
+        public override void OnUpdate()
+        {
+            base.OnUpdate();
 
-    public override void OnDestory()
-    {
-        base.OnDestory();
+            print("My_ScenesMgr OnUpdate");
+        }
 
-        print("My_ScenesMgr OnDestory");
+        public override void OnDestory()
+        {
+            base.OnDestory();
+
+            print("My_ScenesMgr OnDestory");
+        }
     }
 }
