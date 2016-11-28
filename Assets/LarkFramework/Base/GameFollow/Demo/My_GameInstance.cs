@@ -11,20 +11,10 @@ namespace LarkFramework.GameFollow.Demo
 
         }
 
-        void Start()
+        public My_GameInstance Init()
         {
-            My_GameInstance.Create();
             My_GameMode.Create().Init(this);
-        }
-
-        void Update()
-        {
-            My_GameMode.Instance.OnUpdate();
-        }
-
-        void OnDestroy()
-        {
-            My_GameMode.Instance.OnDestroy();
+            return this;
         }
 
         void OnApplicationQuit()

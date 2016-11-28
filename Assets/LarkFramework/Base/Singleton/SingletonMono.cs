@@ -28,26 +28,26 @@ namespace LarkFramework
 
                 if (FindObjectsOfType<T>().Length > 1)
                 {
-                    Debug.LogError("More than 1!");
+                    LarkLog.LogError("<color=silver><SingletonMono></color>" + "More than 1!");
                     return _instance;
                 }
                 
                 if (_instance == null)
                 {
                     string instanceName = typeof(T).Name;
-                    Debug.Log("SingletonMono Instance Name: " + instanceName);
+                    LarkLog.Log("<color=silver><SingletonMono></color>" + "Instance Name: " + instanceName);
                     GameObject instanceGO = GameObject.Find(instanceName);
 
                     if (instanceGO == null)
                         instanceGO = new GameObject(instanceName);
                     _instance = instanceGO.AddComponent<T>();
                     DontDestroyOnLoad(instanceGO);  //保证实例不会被释放
-                    Debug.Log("Add New Singleton " + _instance.name + " in Game!");
+                    LarkLog.Log("<color=silver><SingletonMono></color>" + "Add New Singleton " + _instance.name + " in Game!");
                 }
                 else
                 {
                     DontDestroyOnLoad(_instance);  //保证实例不会被释放
-                    Debug.Log("Already exist: " + _instance.name);
+                    LarkLog.Log("<color=silver><SingletonMono></color>" + "Already exist: " + _instance.name);
                 }
             }
             return _instance;

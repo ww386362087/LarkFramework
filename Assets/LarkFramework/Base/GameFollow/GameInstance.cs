@@ -22,6 +22,11 @@ namespace LarkFramework.Demo
 
         }
 
+        public void Init()
+        {
+
+        }
+
         void Start()
         {
             GameMode.Create().Init(this);

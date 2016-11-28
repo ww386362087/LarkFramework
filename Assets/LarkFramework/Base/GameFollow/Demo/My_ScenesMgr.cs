@@ -14,29 +14,13 @@ using LarkFramework.GameFollow;
 
 namespace LarkFramework.GameFollow.Demo
 {
-
     public class My_ScenesMgr : ManagerBase<My_ScenesMgr>
     {
-
         public override void Init()
         {
             base.Init();
 
-            print("My_ScenesMgr Init");
-        }
-
-        public override void OnUpdate()
-        {
-            base.OnUpdate();
-
-            print("My_ScenesMgr OnUpdate");
-        }
-
-        public override void OnDestory()
-        {
-            base.OnDestory();
-
-            print("My_ScenesMgr OnDestory");
+            LarkLog.Log(this.name + " Init Finished!");
         }
     }
 }

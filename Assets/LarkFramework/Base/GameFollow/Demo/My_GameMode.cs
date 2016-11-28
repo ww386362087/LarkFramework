@@ -20,22 +20,6 @@ namespace LarkFramework.GameFollow.Demo
             My_ScenesMgr.Create().Init();
         }
 
-        public void OnUpdate()
-        {
-            //Update各类管理器
-            print("----this is Update:" + this.gameInstance);
-
-            My_ScenesMgr.Instance.OnUpdate();
-        }
-
-        public void OnDestroy()
-        {
-            //Destory各类管理器
-            print("----this is Destroy:" + this.gameInstance);
-
-            My_ScenesMgr.Instance.OnDestory();
-        }
-
         public Coroutine StartCoroutine(IEnumerator routine)
         {
             return this.gameInstance.StartCoroutine(routine);

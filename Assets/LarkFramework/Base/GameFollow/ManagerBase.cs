@@ -21,6 +21,14 @@ namespace LarkFramework.GameFollow
 
         public virtual void OnUpdate() { }
 
-        public virtual void OnDestory() { }
+        public virtual void OnFixedUpdate() { }
+
+        public virtual void OnLatedUpdate() { }
+
+        public virtual void OnGUI() { }
+
+        public virtual void OnDestroy() { }
+
+        public virtual void OnApplicationQuit() { }
     }
 }
