@@ -15,7 +15,16 @@ namespace LarkFramework.GameFollow
 {
     public class GameModeBase<T1> : SingletonMono<T1> where T1 : SingletonMono<T1>
     {
-
         public virtual void OnUpdate() { }
+
+        public virtual void OnFixedUpdate() { }
+
+        public virtual void OnLatedUpdate() { }
+
+        public virtual void OnGUI() { }
+
+        public virtual void OnDestroy() { }
+
+        public virtual void OnApplicationQuit() { }
     }
 }
