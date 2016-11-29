@@ -5,30 +5,48 @@
  *
  * 版本：V0.0.1
  * 
- * 描述：定制化Log命令
+ * 描述：定制化Log命令,因封装后无法跳转至IDE指定行，故需封装成dll
  ---------------------------------------------------------------*/
 
 using UnityEngine;
-using System.Collections;
 
 namespace LarkFramework
 {
     public class LarkLog
     {
-        //TODO:在Console面板双击时无法跳转至编译器指定行
-        public static void Log(string str)
+        static public bool EnableLog = false;
+
+        public static void Log(string msg)
         {
-            Debug.Log(Config.LogTitle() + str);
+            if(EnableLog)
+                Debug.Log(LarkConfig.LogTitle() + msg);
+        }
+        public static void Log(string msg,Object context)
+        {
+            if (EnableLog)
+                Debug.Log(LarkConfig.LogTitle() + msg, context);
         }
 
-        public static void LogWarning(string str)
+        public static void LogWarning(string msg)
         {
-            Debug.LogWarning(Config.LogTitle() + str);
+            if (EnableLog)
+                Debug.Log(LarkConfig.LogTitle() + msg);
+        }
+        public static void LogWarning(string msg, Object context)
+        {
+            if (EnableLog)
+                Debug.Log(LarkConfig.LogTitle() + msg, context);
         }
 
-        public static void LogError(string str)
+        public static void LogError(string msg)
         {
-            Debug.LogError(Config.LogTitle() + str);
+            if (EnableLog)
+                Debug.Log(LarkConfig.LogTitle() + msg);
+        }
+        public static void LogError(string msg, Object context)
+        {
+            if (EnableLog)
+                Debug.Log(LarkConfig.LogTitle() + msg, context);
         }
     }
 }
