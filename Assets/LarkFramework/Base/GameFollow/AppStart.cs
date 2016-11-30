@@ -10,6 +10,7 @@
 
 using UnityEngine;
 using System.Collections;
+using LarkFramework.GameFollow.Demo;
 
 public class AppStart : MonoBehaviour {
 
