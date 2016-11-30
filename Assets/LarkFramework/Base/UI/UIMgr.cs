@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using LarkFramework.UI;
 
-public class UIStart : MonoBehaviour {
+public class UIMgr : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        UIPage.ShowPage<MainView>();
+        ViewMgr.ShowView<MainView>();
 	}
 }

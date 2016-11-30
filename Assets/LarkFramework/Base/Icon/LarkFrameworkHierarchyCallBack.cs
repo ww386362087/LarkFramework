@@ -22,18 +22,18 @@ namespace LarkFramework
         // 层级窗口项回调
         private static readonly EditorApplication.HierarchyWindowItemCallback hiearchyItemCallback;
 
-        private static Texture2D hierarchyIcon;
-        private static Texture2D HierarchyIcon
-        {
-            get
-            {
-                if (LarkFrameworkHierarchyCallBack.hierarchyIcon == null)
-                {
-                    LarkFrameworkHierarchyCallBack.hierarchyIcon = (Texture2D)Resources.Load("LarkFramework_Logo");
-                }
-                return LarkFrameworkHierarchyCallBack.hierarchyIcon;
-            }
-        }
+        //private static Texture2D hierarchyIcon;
+        //private static Texture2D HierarchyIcon
+        //{
+        //    get
+        //    {
+        //        if (LarkFrameworkHierarchyCallBack.hierarchyIcon == null)
+        //        {
+        //            LarkFrameworkHierarchyCallBack.hierarchyIcon = (Texture2D)Resources.Load("LarkFramework_Logo");
+        //        }
+        //        return LarkFrameworkHierarchyCallBack.hierarchyIcon;
+        //    }
+        //}
 
         private static Texture2D hierarchyEventIcon;
         private static Texture2D HierarchyEventIcon
@@ -64,11 +64,18 @@ namespace LarkFramework
         {
             GameObject gameObject = EditorUtility.InstanceIDToObject(instanceID) as GameObject;
 
-            // 设置icon的位置与尺寸（Hierarchy窗口的左上角是起点）
-            Rect rect = new Rect(0, 0, 16, 16);
-            //Rect rect = new Rect(selectionRect.x + selectionRect.width - 16f, selectionRect.y, 16f, 16f);
-            // 画icon
-            GUI.DrawTexture(rect, LarkFrameworkHierarchyCallBack.HierarchyEventIcon);
+            if (gameObject != null)
+            {
+                if (!gameObject.name.Equals("LarkFramework"))
+                    return;
+
+                // 设置icon的位置与尺寸（Hierarchy窗口的左上角是起点）
+                //Rect rect = new Rect(0, 0, 16, 16);
+                //Rect rect = new Rect(selectionRect.x + selectionRect.width - 16f, selectionRect.y, 16f, 16f);
+                Rect rect = new Rect(0, selectionRect.y, 16f, 16f);
+                // 画icon
+                GUI.DrawTexture(rect, LarkFrameworkHierarchyCallBack.HierarchyEventIcon);
+            } 
         }
     }
 }
