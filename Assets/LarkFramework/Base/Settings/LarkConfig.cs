@@ -13,7 +13,7 @@ using System.Collections;
 
 namespace LarkFramework
 {
-    public class Config
+    public class LarkConfig
     {
         public static string LogTitle()
         {

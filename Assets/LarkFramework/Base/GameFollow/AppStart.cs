@@ -10,11 +10,12 @@
 
 using UnityEngine;
 using System.Collections;
-using LarkFramework.GameFollow.Demo;
+using LarkFramework;
 
 public class AppStart : MonoBehaviour {
 
     public AppEnums.AppMode mode;
+    public bool openDebug;
 
     // Use this for initialization
     void Start () {
@@ -23,9 +24,12 @@ public class AppStart : MonoBehaviour {
 
     IEnumerator AppLaunching()
     {
+        AppConfig.appMode = mode;
+        LarkLog.EnableLog = openDebug;
+
         //配置加载
-        //FPS
         Application.targetFrameRate = 60;
+
 
         //日志输出
 
@@ -36,10 +40,12 @@ public class AppStart : MonoBehaviour {
         }
 
         //进入测试逻辑
-        switch (mode)
+        switch (AppConfig.appMode)
         {
             case AppEnums.AppMode.Developing:
                 {
+                    LarkLog.EnableLog = true;
+
                     yield return null;
                 }
                 break;
@@ -50,6 +56,8 @@ public class AppStart : MonoBehaviour {
                 break;
             case AppEnums.AppMode.Release:
                 {
+                    LarkLog.EnableLog = false;
+
                     yield return null;
                 }
                 break;
