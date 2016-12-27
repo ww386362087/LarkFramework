@@ -39,7 +39,7 @@ namespace LarkFramework.UI
             T instance = new T();
             Type type = typeof(T);
 
-            LoadView(instance.viewPath,type.Name);
+            LoadView(instance.viewPath,type);
         }
 
         /// <summary>
@@ -47,11 +47,11 @@ namespace LarkFramework.UI
         /// </summary>
         /// <param name="viewPath"></param>
         /// <param name="typeName"></param>
-        public static void LoadView(string viewPath,string typeName)
+        public static void LoadView(string viewPath,Type type)
         {
             if (string.IsNullOrEmpty(viewPath))
             {
-                LarkLog.LogError("View Path is Null:" + "<color=silver><" + typeName + "></color>");
+                LarkLog.LogError("View Path is Null:" + "<color=silver><" + type.Name + "></color>");
                 return;
             }
 
@@ -60,7 +60,7 @@ namespace LarkFramework.UI
 
             if (page == null)
             {
-                LarkLog.LogError("Cant Load view prefab:"+ "<color=silver><" + typeName + "></color>" + viewPath);
+                LarkLog.LogError("Cant Load view prefab:"+ "<color=silver><" + type.Name + "></color>" + viewPath);
                 return;
             }
 
@@ -79,6 +79,10 @@ namespace LarkFramework.UI
             page.GetComponent<RectTransform>().anchoredPosition = anchorPos;
             page.GetComponent<RectTransform>().sizeDelta = sizeDel;
             page.GetComponent<RectTransform>().localScale = scale;
+
+            var view = page.GetComponent<ViewBase>();
+            view.viewGameObject = page;
+            view.ShowView();
         }
     }
 }
