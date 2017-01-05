@@ -22,9 +22,9 @@ namespace LarkFramework.Demo
 
         }
 
-        public void Init()
+        public GameInstance Init()
         {
-
+            return this;
         }
 
         void Start()

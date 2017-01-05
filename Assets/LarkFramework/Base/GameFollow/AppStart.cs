@@ -12,55 +12,60 @@ using UnityEngine;
 using System.Collections;
 using LarkFramework;
 
-public class AppStart : MonoBehaviour {
-
-    public AppEnums.AppMode mode;
-    public bool openDebug;
-
-    // Use this for initialization
-    void Start () {
-        StartCoroutine(AppLaunching());
-	}
-
-    IEnumerator AppLaunching()
+namespace LarkFramework.Demo
+{
+    public class AppStart : MonoBehaviour
     {
-        AppConfig.appMode = mode;
-        LarkLog.EnableLog = openDebug;
 
-        //配置加载
-        Application.targetFrameRate = 60;
+        public AppEnums.AppMode mode;
+        public bool openDebug;
 
-
-        //日志输出
-
-
-        if (My_GameInstance.Instance == null)
+        // Use this for initialization
+        void Start()
         {
-            yield return My_GameInstance.Create().Init();
+            StartCoroutine(AppLaunching());
         }
 
-        //进入测试逻辑
-        switch (AppConfig.appMode)
+        IEnumerator AppLaunching()
         {
-            case AppEnums.AppMode.Developing:
-                {
-                    LarkLog.EnableLog = true;
+            AppConfig.appMode = mode;
+            LarkLog.EnableLog = openDebug;
 
-                    yield return null;
-                }
-                break;
-            case AppEnums.AppMode.QA:
-                {
-                    yield return null;
-                }
-                break;
-            case AppEnums.AppMode.Release:
-                {
-                    LarkLog.EnableLog = false;
+            //配置加载
+            Application.targetFrameRate = 60;
 
-                    yield return null;
-                }
-                break;
+
+            //日志输出
+
+
+            if (GameInstance.Instance == null)
+            {
+                yield return GameInstance.Create().Init();
+            }
+
+            //进入测试逻辑
+            switch (AppConfig.appMode)
+            {
+                case AppEnums.AppMode.Developing:
+                    {
+                        LarkLog.EnableLog = true;
+
+                        yield return null;
+                    }
+                    break;
+                case AppEnums.AppMode.QA:
+                    {
+                        yield return null;
+                    }
+                    break;
+                case AppEnums.AppMode.Release:
+                    {
+                        LarkLog.EnableLog = false;
+
+                        yield return null;
+                    }
+                    break;
+            }
         }
     }
 }
