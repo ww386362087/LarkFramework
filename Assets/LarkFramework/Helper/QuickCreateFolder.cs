@@ -53,6 +53,7 @@ namespace LarkFramework
             CreateDirectoryAndFile(path, "_Documnets");
             CreateDirectoryAndFile(path, "Terrains");
             CreateDirectoryAndFile(path, "Effects");
+            CreateDirectoryAndFile(path, "Models");
 
             CreateTxt(Application.dataPath + "/" + Application.productName + "/ReadMe");
             WriteTxt(Application.dataPath + "/" + Application.productName + "/ReadMe.txt", "欢迎使用LarkFramework框架！项目：" + Application.productName + " 创建于：" + DateTime.Now);

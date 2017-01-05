@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public static class DebugDraw
-{
+public class DebugDraw : MonoBehaviour {
 
     public static void DrawMarker(Vector3 position, float size, Color color, float duration, bool depthTest = true)
     {

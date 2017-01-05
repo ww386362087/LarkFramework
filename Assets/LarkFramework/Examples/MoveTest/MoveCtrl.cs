@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MoveCtrl : MonoBehaviour {
+public class CharacterMoveCtrl : MonoBehaviour {
 
     public Transform mainCam;
 
