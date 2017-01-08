@@ -4,17 +4,11 @@ using LarkFramework.GameFollow;
 
 namespace LarkFramework.GameFollow.Demo
 {
-    public class My_GameMode : GameModeBase<My_GameMode>
+    public class My_GameMode : GameModeBase<My_GameMode,My_GameInstance>
     {
-        [HideInInspector]
-        public My_GameInstance gameInstance { get; private set; }
-        [HideInInspector]
-        public GameObject gameInstanceObj { get; private set; }
-
-        public virtual void Init(My_GameInstance gameInstance)
+        public override void Init(My_GameInstance gameInstance, GameObject obj)
         {
-            this.gameInstance = gameInstance;
-            this.gameInstanceObj = gameInstance.gameObject;
+            base.Init(gameInstance, obj);
 
             this.gameInstance.onUpdate += OnUpdate;
 
@@ -22,16 +16,6 @@ namespace LarkFramework.GameFollow.Demo
             My_ScenesMgr.Create().Init();
 
             LarkLog.Log(this.name + " Init Finished");
-        }
-
-        public Coroutine StartCoroutine(IEnumerator routine)
-        {
-            return this.gameInstance.StartCoroutine(routine);
-        }
-
-        public void Coroutine(IEnumerator routine)
-        {
-            this.gameInstance.StopCoroutine(routine);
         }
     }
 

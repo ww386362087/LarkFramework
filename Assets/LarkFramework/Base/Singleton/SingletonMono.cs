@@ -70,6 +70,15 @@ namespace LarkFramework
         /// </summary>
         public static void Destroy()
         {
+            T[] instanceList =FindObjectsOfType(typeof(T)) as T[];
+            if (instanceList!=null && instanceList.Length >0)
+            {
+                for (int i = 0; i < instanceList.Length; i++)
+                {
+                    Destroy(instanceList[i].gameObject);
+                }
+            }
+
             _instance = null;
             return;
         }

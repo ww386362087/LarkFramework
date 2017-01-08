@@ -14,7 +14,7 @@ namespace LarkFramework.GameFollow.Demo
         public My_GameInstance Init()
         {
             //初始化GameMode
-            My_GameMode.Create().Init(this);
+            My_GameMode.Create().Init(this,gameObject);
 
             LarkLog.Log(this.name + " Init Finished");
             return this;

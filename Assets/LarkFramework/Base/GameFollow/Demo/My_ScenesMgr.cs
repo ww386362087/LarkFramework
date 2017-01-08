@@ -21,6 +21,14 @@ namespace LarkFramework.GameFollow.Demo
             base.Init();
 
             LarkLog.Log(this.name + " Init Finished!");
+
+            My_GameMode.Instance.StartCoroutineTask(DoSomething());
+        }
+
+        IEnumerator DoSomething()
+        {
+            yield return new WaitForSeconds(1);
+            LarkLog.Log(this.name + " DoSomething");
         }
     }
 }

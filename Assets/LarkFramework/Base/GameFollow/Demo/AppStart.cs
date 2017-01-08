@@ -16,8 +16,8 @@ namespace LarkFramework.GameFollow.Demo
 
     public class AppStart : MonoBehaviour
     {
-
         public AppEnums.AppMode mode;
+        public bool openDebug;
 
         // Use this for initialization
         void Start()
@@ -29,7 +29,8 @@ namespace LarkFramework.GameFollow.Demo
         {
             //配置加载
             //FPS
-            Application.targetFrameRate = 60;
+            AppConfig.appMode = mode;
+            LarkLog.EnableLog = openDebug;
 
             //日志输出
 
