@@ -2,7 +2,7 @@
 using System.Collections;
 using LarkFramework;
 
-public class PlayerMgr : Actor {
+public class PlayerMgr : ActorBase {
 
     [SerializeField]
     float radius=0.5f;

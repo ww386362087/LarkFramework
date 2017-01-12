@@ -27,6 +27,8 @@ namespace LarkFramework.GameFollow
         {
             this.gameInstance = gameInstance;
             this.gameInstanceObj = obj;
+
+            this.gameInstance.onUpdate += OnUpdate;
         }
 
         public virtual void OnUpdate() { }
