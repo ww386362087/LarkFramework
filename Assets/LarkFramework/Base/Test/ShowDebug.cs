@@ -24,6 +24,7 @@ namespace LarkFramework.Test
 {
     public class ShowDebug : MonoBehaviour
     {
+        public bool isShow;
 
         List<logdata> logDatas = new List<logdata>();//log链表
         List<logdata> errorDatas = new List<logdata>();//错误和异常链表
@@ -97,8 +98,31 @@ namespace LarkFramework.Test
                 }
             }
         }
+
+        private bool ShowPlane(Event e)
+        {
+            bool eventDown = (e.modifiers & EventModifiers.Shift) != 0;
+            switch (e.keyCode)
+            {
+                case KeyCode.F12:
+                    if (eventDown)
+                    {
+                        e.Use();
+                        isShow = !isShow;
+                    }
+                    return true;
+            }
+            return false;
+        }
+
         void OnGUI()
         {
+            //组合键切换控制台
+            if (Event.current.rawType == EventType.keyDown)
+                ShowPlane(Event.current);
+
+            if (!isShow) return;
+
             GUILayout.BeginHorizontal();
             if (GUILayout.Button(">>Open", GUILayout.Height(150), GUILayout.Width(150)))
                 open = !open;

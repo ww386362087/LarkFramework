@@ -41,6 +41,9 @@ namespace LarkFramework
             if (PlayerSettings.bundleIdentifier.Equals("com.Company.ProductName"))
                 PlayerSettings.bundleIdentifier = "com.evesgf.product";
 
+            if (EditorSettings.unityRemoteDevice.Equals("None"))
+                EditorSettings.unityRemoteDevice = "Any Android Device";
+
             Debug.Log("Auto Set Project Settings Finish!");
         }
     }
