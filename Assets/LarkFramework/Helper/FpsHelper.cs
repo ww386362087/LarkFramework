@@ -11,6 +11,8 @@ public class FpsHelper : MonoBehaviour {
 
     private float m_FPS = 0;
 
+    private GUIStyle fontStyle = new GUIStyle();
+
     void Awake()
     {
         Application.targetFrameRate = 100;
@@ -19,6 +21,10 @@ public class FpsHelper : MonoBehaviour {
     // Use this for initialization  
     void Start()
     {
+        fontStyle.normal.background = null;    //设置背景填充  
+        fontStyle.normal.textColor = new Color(0, 1, 1);   //设置字体颜色  
+        fontStyle.fontSize = 36;       //字体大小 
+
         m_LastUpdateShowTime = Time.realtimeSinceStartup;
     }
 
@@ -36,6 +42,6 @@ public class FpsHelper : MonoBehaviour {
 
     void OnGUI()
     {
-        GUI.Label(new Rect(Screen.width -100, Screen.height-30, 100, 30), "FPS: " + m_FPS.ToString("f2"));
+        GUI.Label(new Rect(Screen.width -200, Screen.height-60, 200, 60), "FPS: " + m_FPS.ToString("f2"),fontStyle);
     }
 }

@@ -39,7 +39,7 @@ namespace LarkFramework
                 PlayerSettings.defaultInterfaceOrientation = UIOrientation.LandscapeLeft;
 
             if (PlayerSettings.bundleIdentifier.Equals("com.Company.ProductName"))
-                PlayerSettings.bundleIdentifier = "com.evesgf.product";
+                PlayerSettings.bundleIdentifier = "com.evesgf."+ Application.productName;
 
             if (EditorSettings.unityRemoteDevice.Equals("None"))
                 EditorSettings.unityRemoteDevice = "Any Android Device";
