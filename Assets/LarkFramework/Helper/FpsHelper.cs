@@ -36,6 +36,10 @@ public class FpsHelper : MonoBehaviour {
 
     void OnGUI()
     {
-        GUI.Label(new Rect(Screen.width -100, Screen.height-30, 100, 30), "FPS: " + m_FPS.ToString("f2"));
+        GUIStyle fontStyle = new GUIStyle();
+        fontStyle.fontSize = 40;
+        fontStyle.normal.textColor = new Color(1, 0, 0);
+
+        GUI.Label(new Rect(Screen.width -500, Screen.height-100, 100, 100), "FPS: " + m_FPS.ToString("f2"),fontStyle);
     }
 }
