@@ -6,6 +6,7 @@
  * 版本：V0.0.1
  * 
  * 描述：调试脚本
+ * Shift+F12呼出界面
  * 本脚本挂在一个空对象或转换场景时不删除的对象即可
  * 错误和异常输出日记路径 Application.persistentDataPath
  ---------------------------------------------------------------*/
@@ -24,6 +25,8 @@ namespace LarkFramework.Test
 {
     public class ShowDebug : MonoBehaviour
     {
+        public bool isShow;
+        public GameObject debugCanvas;
 
         List<logdata> logDatas = new List<logdata>();//log链表
         List<logdata> errorDatas = new List<logdata>();//错误和异常链表
@@ -40,6 +43,10 @@ namespace LarkFramework.Test
         private string outpath;
         void Start()
         {
+            //开关FPS
+            GetComponent<FpsHelper>().enabled = isShow;
+            debugCanvas.SetActive(isShow);
+
             //Application.persistentDataPath Unity中只有这个路径是既可以读也可以写的。
             //Debug.Log(Application.persistentDataPath);
             outpath = Application.persistentDataPath + "/outLog.txt";
@@ -49,7 +56,7 @@ namespace LarkFramework.Test
                 File.Delete(outpath);
             }
             //转换场景不删除
-            Application.DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(gameObject);
         }
         void OnEnable()
         {
@@ -97,8 +104,35 @@ namespace LarkFramework.Test
                 }
             }
         }
+
+        private bool ShowPlane(Event e)
+        {
+            bool eventDown = (e.modifiers & EventModifiers.Shift) != 0;
+            switch (e.keyCode)
+            {
+                case KeyCode.F12:
+                    if (eventDown)
+                    {
+                        e.Use();
+                        isShow = !isShow;
+
+                        //开关FPS
+                        GetComponent<FpsHelper>().enabled = isShow;
+                        debugCanvas.SetActive(isShow);
+                    }
+                    return true;
+            }
+            return false;
+        }
+
         void OnGUI()
         {
+            //组合键切换控制台
+            if (Event.current.rawType == EventType.keyDown)
+                ShowPlane(Event.current);
+
+            if (!isShow) return;
+
             GUILayout.BeginHorizontal();
             if (GUILayout.Button(">>Open", GUILayout.Height(150), GUILayout.Width(150)))
                 open = !open;

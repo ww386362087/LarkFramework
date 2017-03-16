@@ -16,11 +16,20 @@ namespace LarkFramework.UI
 {
     public class ViewMgr : MonoBehaviour
     {
+        /// <summary>
+        /// 显示UI
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
         public static void ShowView<T>() where T: ViewBase, new()
         {
             ShowView<T>(null, null, false);
         }
 
+        /// <summary>
+        /// 显示UI并传入数据
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="pageData"></param>
         public static void ShowView<T>(object pageData) where T : ViewBase, new()
         {
             ShowView<T>(null, pageData, false);
