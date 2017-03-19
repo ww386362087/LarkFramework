@@ -23,6 +23,15 @@ namespace LarkFramework
             new GameObject("LarkFramework");
             Debug.Log("Create SceneList Finish!");
         }
+
+        [MenuItem("LarkFramework/SaveLarkSettings")]
+        public static void SaveLarkSettings()
+        {
+            string dir =string.Format("Assets/LarkFramework/Resources/{0}.asset", (typeof(LarkSettings).ToString()));
+            ScriptableObject settings = ScriptableObject.CreateInstance<LarkSettings>();
+            AssetDatabase.CreateAsset(new ScriptableObject(), dir);
+            AssetDatabase.Refresh();
+        }
     }
 
 }
