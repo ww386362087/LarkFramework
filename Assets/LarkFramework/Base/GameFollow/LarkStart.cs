@@ -12,28 +12,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using LarkFramework;
+using LarkFramework.Config;
 
-namespace LarkFramework.GameFollow
+namespace LarkFramework.GameFlow
 {
     public class LarkStart : MonoBehaviour
     {
-        public static GameObject LarkFrameworkPrefab;
+        public GameObject prefab;
 
-        // Use this for initialization
+        protected GameObject gameInstancePrefab;
+
         void Start()
         {
-            if (LarkFrameworkPrefab == null)
+            if (gameInstancePrefab == null)
             {
-                if (FindObjectOfType<LarkStart>() != null)
+                if (FindObjectOfType<GameInstance>() != null)
                 {
-                    LarkStart[] instances = Object.FindObjectsOfType<LarkStart>() as LarkStart[];
-                    foreach (LarkStart instance in instances)
+                    GameInstance[] instances = Object.FindObjectsOfType<GameInstance>() as GameInstance[];
+                    foreach (var instance in instances)
                     {
                         if (instance.gameObject.scene.name == "DontDestroyOnLoad")
                         {
-                            print(instance.gameObject.name);
+                            gameInstancePrefab = instance.gameObject;
                         }
                     }
+                }
+                else
+                {
+                    LarkSettings settings = Resources.Load<LarkSettings>(typeof(LarkSettings).Name);
+                    gameInstancePrefab = Instantiate(settings.gameInstancePrefab);
+                    DontDestroyOnLoad(gameInstancePrefab);
+                    gameInstancePrefab.name = typeof(GameInstance).Name;
                 }
             }
         }

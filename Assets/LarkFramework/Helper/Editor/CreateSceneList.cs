@@ -8,6 +8,7 @@
  * 描述：自动创建场景相关组件
  ---------------------------------------------------------------*/
 
+using LarkFramework.GameFlow;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -20,7 +21,10 @@ namespace LarkFramework
         [MenuItem("LarkFramework/CreateSceneList")]
         public static void CreateList()
         {
-            new GameObject("LarkFramework");
+            //TODO:实例化出来的对象不关联预置体
+            var gameMode=Instantiate(LarkSettingsMgr.GetLarkSettings().gameModePrefab);
+            gameMode.name = typeof(GameMode).Name;
+
             Debug.Log("Create SceneList Finish!");
         }
     }

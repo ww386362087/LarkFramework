@@ -46,7 +46,7 @@ namespace LarkFramework
             CreateDirectoryAndFile(path, "Audios");
             CreateDirectoryAndFile(path, "Materials");
             CreateDirectoryAndFile(path, "Animations");
-            CreateDirectoryAndFile(path, "Parks");
+            CreateDirectoryAndFile(path, "Packages");
             CreateDirectoryAndFile(path, "Shaders");
             CreateDirectoryAndFile(path, "Prefabs");
             CreateDirectoryAndFile(path, "SandBoxs");

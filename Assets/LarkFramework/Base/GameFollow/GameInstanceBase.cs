@@ -11,7 +11,7 @@
 using UnityEngine;
 using System.Collections;
 
-namespace LarkFramework.GameFollow
+namespace LarkFramework.GameFlow
 {
     public class GameInstanceBase<T> : SingletonMono<T> where T : SingletonMono<T>
     {

@@ -29,20 +29,42 @@ namespace LarkFramework
             if (PlayerSettings.displayResolutionDialog != ResolutionDialogSetting.HiddenByDefault)
                 PlayerSettings.displayResolutionDialog = ResolutionDialogSetting.HiddenByDefault;
 
-            if (PlayerSettings.showUnitySplashScreen)
-                PlayerSettings.showUnitySplashScreen = false;
+            //关闭unity自带过场动画
+            if (!PlayerSettings.SplashScreen.show)
+                PlayerSettings.SplashScreen.show = false;
 
             if (PlayerSettings.apiCompatibilityLevel != ApiCompatibilityLevel.NET_2_0)
                 PlayerSettings.apiCompatibilityLevel = ApiCompatibilityLevel.NET_2_0;
 
-            if (PlayerSettings.defaultInterfaceOrientation != UIOrientation.LandscapeLeft)
-                PlayerSettings.defaultInterfaceOrientation = UIOrientation.LandscapeLeft;
-
             if (PlayerSettings.bundleIdentifier.Equals("com.Company.ProductName"))
                 PlayerSettings.bundleIdentifier = "com.evesgf."+ Application.productName;
 
+            //用于unity remote调试
             if (EditorSettings.unityRemoteDevice.Equals("None"))
                 EditorSettings.unityRemoteDevice = "Any Android Device";
+
+            //限制只能运行一个实例
+            //if (!PlayerSettings.forceSingleInstance)
+            //    PlayerSettings.forceSingleInstance = true;
+
+            #region 移动端配置
+
+            //开启自动旋转
+            if (PlayerSettings.defaultInterfaceOrientation != UIOrientation.AutoRotation)
+                PlayerSettings.defaultInterfaceOrientation = UIOrientation.AutoRotation;
+
+            //开启左右横屏旋转支持
+            if (!PlayerSettings.allowedAutorotateToLandscapeLeft)
+                PlayerSettings.allowedAutorotateToLandscapeLeft = true;
+            if (!PlayerSettings.allowedAutorotateToLandscapeRight)
+                PlayerSettings.allowedAutorotateToLandscapeRight = true;
+
+            //关闭竖屏旋转支持
+            if (!PlayerSettings.allowedAutorotateToPortrait)
+                PlayerSettings.allowedAutorotateToPortrait = false;
+            if (!PlayerSettings.allowedAutorotateToPortraitUpsideDown)
+                PlayerSettings.allowedAutorotateToPortraitUpsideDown = false;
+            #endregion
 
             Debug.Log("Auto Set Project Settings Finish!");
         }
