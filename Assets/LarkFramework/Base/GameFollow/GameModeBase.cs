@@ -3,30 +3,36 @@
  * 修改：evesgf    修改时间：2017-1-7 11:20:08
  * 联系：Email     821113542@qq.com
  *
- * 版本：V0.0.2
+ * 版本：V0.0.3
  * 
- * 描述：实例化组件
+ * 描述：剔除单例，转为每个场景一个
  ---------------------------------------------------------------*/
 
 using UnityEngine;
 using System.Collections;
 using System;
+using LarkFramework.Config;
 
-namespace LarkFramework.GameFollow
+namespace LarkFramework.GameFlow
 {
-    public class GameModeBase<T1,T2> : SingletonMono<T1>
-        where T1 : SingletonMono<T1>
-        where T2 : GameInstanceBase<T2>
+    public class GameModeBase<T> :ActorBase
+        where T : GameInstanceBase<T>
     {
         [HideInInspector]
-        public T2 gameInstance { get; private set; }
+        public T gameInstance { get; private set; }
         [HideInInspector]
-        public GameObject gameInstanceObj { get; private set; }
+        public GameObject gameInstancePrefab { get; private set; }
 
-        public virtual void Init(T2 gameInstance,GameObject obj)
+        private void Awake()
         {
-            this.gameInstance = gameInstance;
-            this.gameInstanceObj = obj;
+            Init();
+        }
+
+        public virtual void Init()
+        {
+            CheckGameInstance();
+
+            this.gameInstance = gameInstancePrefab.GetComponent<T>();
 
             this.gameInstance.onUpdate += OnUpdate;
         }
@@ -79,5 +85,34 @@ namespace LarkFramework.GameFollow
         }
 
         #endregion
+
+        /// <summary>
+        /// 检查场景中是否存在GameInstance
+        /// </summary>
+        private void CheckGameInstance()
+        {
+            if (gameInstancePrefab == null)
+            {
+                if (FindObjectOfType<T>() != null)
+                {
+                    T[] instances =FindObjectsOfType<T>() as T[];
+                    foreach (var instance in instances)
+                    {
+                        if (instance.gameObject.scene.name == "DontDestroyOnLoad")
+                        {
+                            gameInstancePrefab = instance.gameObject;
+                        }
+                    }
+                }
+                else
+                {
+                    //LarkSettings settings = Resources.Load<LarkSettings>(typeof(LarkSettings).Name);
+                    //gameInstancePrefab = Instantiate(settings.gameInstancePrefab);
+                    //DontDestroyOnLoad(gameInstancePrefab);
+                    //gameInstancePrefab.name = typeof(T).Name;
+                    gameInstancePrefab=GameInstance.Create().Init().gameObject;
+                }
+            }
+        }
     }
 }

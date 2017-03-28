@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-namespace Larkframework.Test
+namespace LarkFramework.Test
 {
     public class Test_FSM : MonoBehaviour
     {
