@@ -30,8 +30,12 @@ namespace LarkFramework
                 PlayerSettings.displayResolutionDialog = ResolutionDialogSetting.HiddenByDefault;
 
             //关闭unity自带过场动画
-            if (!PlayerSettings.SplashScreen.show)
-                PlayerSettings.SplashScreen.show = false;
+            //TODO:5.5 关闭过场动画API升级
+            //if (!PlayerSettings.SplashScreen.show)
+            //    PlayerSettings.SplashScreen.show = false;
+
+            if (!PlayerSettings.showUnitySplashScreen)
+                PlayerSettings.showUnitySplashScreen = false;
 
             if (PlayerSettings.apiCompatibilityLevel != ApiCompatibilityLevel.NET_2_0)
                 PlayerSettings.apiCompatibilityLevel = ApiCompatibilityLevel.NET_2_0;
@@ -47,7 +51,7 @@ namespace LarkFramework
             //if (!PlayerSettings.forceSingleInstance)
             //    PlayerSettings.forceSingleInstance = true;
 
-            #region 移动端配置
+#region 移动端配置
 
             //开启自动旋转
             if (PlayerSettings.defaultInterfaceOrientation != UIOrientation.AutoRotation)
@@ -64,7 +68,7 @@ namespace LarkFramework
                 PlayerSettings.allowedAutorotateToPortrait = false;
             if (!PlayerSettings.allowedAutorotateToPortraitUpsideDown)
                 PlayerSettings.allowedAutorotateToPortraitUpsideDown = false;
-            #endregion
+#endregion
 
             Debug.Log("Auto Set Project Settings Finish!");
         }
