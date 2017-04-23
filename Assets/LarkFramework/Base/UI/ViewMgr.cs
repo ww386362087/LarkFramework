@@ -11,7 +11,7 @@
 using UnityEngine;
 using System.Collections;
 using System;
-using LarkFramework.ResourcesMgr;
+using LarkFramework.Base;
 using UnityEngine.EventSystems;
 
 namespace LarkFramework.UI

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-namespace LarkFramework.ResourcesMgr
+namespace LarkFramework.Base
 {
 
     public interface IResourcesListener
