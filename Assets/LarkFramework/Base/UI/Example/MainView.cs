@@ -1,16 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-namespace LarkFramework.UI
+namespace LarkFramework.UI.Example
 {
 
     public class MainView : ViewBase
     {
-        public GUIAnim[] guiAnims;
-
         public MainView() : base(ViewType.Normal, ViewMode.DoNothing, ViewCollider.None)
         {
-            viewPath = "Views/MainView";
+            viewPath = "Views/MainCanvas";
         }
 
         public void Start()
@@ -22,11 +20,11 @@ namespace LarkFramework.UI
         {
             base.ShowView();
 
-            if (guiAnims.Length == 0) return;
+            if (guiAnimItems.Length == 0) return;
 
-            for (int i = 0; i < guiAnims.Length; i++)
+            for (int i = 0; i < guiAnimItems.Length; i++)
             {
-                guiAnims[i].MoveIn();
+                guiAnimItems[i].MoveIn();
             }
         }
     }
