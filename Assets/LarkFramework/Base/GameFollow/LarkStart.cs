@@ -19,8 +19,6 @@ namespace LarkFramework.GameFlow
 {
     public class LarkStart : MonoBehaviour
     {
-        public GameObject prefab;
-
         protected GameObject gameInstancePrefab;
 
         void Start()
@@ -44,6 +42,7 @@ namespace LarkFramework.GameFlow
                     gameInstancePrefab = Instantiate(settings.gameInstancePrefab);
                     DontDestroyOnLoad(gameInstancePrefab);
                     gameInstancePrefab.name = typeof(GameInstance).Name;
+                    GameInstance.Create().Init();
                 }
             }
         }

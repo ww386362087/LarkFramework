@@ -11,5 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5273d4d7abb7aa4dabdd81748a11aa3, type: 3}
   m_Name: LarkSettings
   m_EditorClassIdentifier: 
-  gameInstancePrefab: {fileID: 0}
-  gameModePrefab: {fileID: 0}
+  gameInstancePrefab: {fileID: 1000011496345800, guid: 5f71d74a68423e84a99ef570c7ae67e5,
+    type: 2}
+  gameModePrefab: {fileID: 1883441187633356, guid: 0a7fce75e83b0114db9014621ff5c5e7,
+    type: 2}
