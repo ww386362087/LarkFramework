@@ -11,10 +11,12 @@
 using UnityEngine;
 using System.Collections;
 using System;
+using LarkFramework.ResourcesMgr;
+using UnityEngine.EventSystems;
 
 namespace LarkFramework.UI
 {
-    public class ViewMgr : MonoBehaviour
+    public class ViewMgr : MonoBehaviour,IResourcesListener
     {
         /// <summary>
         /// 显示UI
@@ -64,12 +66,20 @@ namespace LarkFramework.UI
                 return;
             }
 
-            var canvas = GameObject.Find("Canvas").transform;
-            GameObject page = GameObject.Instantiate(Resources.Load(viewPath)) as GameObject;
+            var uiMgr = GameObject.FindObjectOfType<EventSystem>().transform;
+            var load = Resources.Load(viewPath) as GameObject;
+
+            if (load == null)
+            {
+                LarkLog.LogError("Cant Load view prefab:" + "<color=silver><" + type.Name + "></color>" + viewPath);
+                return;
+            }
+
+            GameObject page = GameObject.Instantiate(load) as GameObject;
 
             if (page == null)
             {
-                LarkLog.LogError("Cant Load view prefab:"+ "<color=silver><" + type.Name + "></color>" + viewPath);
+                LarkLog.LogError("Cant Instantiate view prefab:" + "<color=silver><" + type.Name + "></color>" + viewPath);
                 return;
             }
 
@@ -83,7 +93,7 @@ namespace LarkFramework.UI
             sizeDel = page.GetComponent<RectTransform>().sizeDelta;
             scale = page.GetComponent<RectTransform>().localScale;
 
-            page.transform.parent = canvas.transform;
+            page.transform.parent = uiMgr.transform;
 
             page.GetComponent<RectTransform>().anchoredPosition = anchorPos;
             page.GetComponent<RectTransform>().sizeDelta = sizeDel;
@@ -92,6 +102,11 @@ namespace LarkFramework.UI
             var view = page.GetComponent<ViewBase>();
             view.viewGameObject = page;
             view.ShowView();
+        }
+
+        public void OnLoaded(string assetName, object asset)
+        {
+            //TODO:对接ResourcesMgr
         }
     }
 }

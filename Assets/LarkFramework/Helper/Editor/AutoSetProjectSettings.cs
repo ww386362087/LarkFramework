@@ -29,13 +29,14 @@ namespace LarkFramework
             if (PlayerSettings.displayResolutionDialog != ResolutionDialogSetting.HiddenByDefault)
                 PlayerSettings.displayResolutionDialog = ResolutionDialogSetting.HiddenByDefault;
 
+#if UNITY_5_5
             //关闭unity自带过场动画
-            //TODO:5.5 关闭过场动画API升级
-            //if (!PlayerSettings.SplashScreen.show)
-            //    PlayerSettings.SplashScreen.show = false;
-
-            if (!PlayerSettings.showUnitySplashScreen)
+            if (!PlayerSettings.SplashScreen.show)
+                PlayerSettings.SplashScreen.show = false;
+#else
+            if (PlayerSettings.showUnitySplashScreen)
                 PlayerSettings.showUnitySplashScreen = false;
+#endif
 
             if (PlayerSettings.apiCompatibilityLevel != ApiCompatibilityLevel.NET_2_0)
                 PlayerSettings.apiCompatibilityLevel = ApiCompatibilityLevel.NET_2_0;
